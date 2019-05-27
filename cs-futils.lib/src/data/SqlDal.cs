@@ -7,24 +7,6 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 
-// using System.Diagnostics;
-// using System.Collections;
-// using System.Collections.Generic;
-// using System.IO;
-// using System.Net.Mail;
-// using System.Security.AccessControl;
-// using System.Security.Principal;
-// using System.Runtime.InteropServices;
-// using System.Runtime.Serialization.Formatters.Binary;
-// using System.Linq;
-// using System.Data;
-// using System.Data.Common;
-// using System.Text;
-// using System.Text.RegularExpressions;
-// using Microsoft.Win32.SafeHandles;
-// using System.Web.UI.WebControls;
-// using System.Linq.Expressions;
-
 namespace joham.cs_futils.data
 {
     public class SqlDAL
@@ -63,7 +45,9 @@ namespace joham.cs_futils.data
 
         public SqlDAL()
         {
-            m_DbFactory = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            // TODO: will be available in dotnetcore 3.0!
+            // https://weblog.west-wind.com/posts/2017/nov/27/working-around-the-lack-of-dynamic-dbproviderfactory-loading-in-net-core
+            m_DbFactory = System.Data.Common.DbProviderFactories.GetFactory("System.Data.SqlClient");
         }
 
         public DbConnection CreateConnection()

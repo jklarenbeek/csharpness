@@ -56,8 +56,8 @@ namespace joham.cs_futils.web
             p.TableName = properties.TableName + "_PARSED";
             foreach(DataRow r in p.AsEnumerable())
             {
-                string key = r.Field<string>(RigoDAL.TL_KEY_KEY).ToUpper();
-                r[RigoDAL.TL_KEY_KEY] = key.StartsWith("{")?key:string.Format("{0}{1}{2}", '{', key, '}');
+                string key = r.Field<string>(JohamWeb.TL_KEY_KEY).ToUpper();
+                r[JohamWeb.TL_KEY_KEY] = key.StartsWith("{")?key:string.Format("{0}{1}{2}", '{', key, '}');
             }
             p.AcceptChanges();
             return p;
@@ -180,7 +180,7 @@ namespace joham.cs_futils.web
         {
             string from = ConfigurationManager.AppSettings["SMTP_FROM"];
             if (String.IsNullOrWhiteSpace(from))
-                from = "Projectenadministratie <post@rigo.nl>";
+                from = "Projectenadministratie <post@global.nl>";
 
             // save to email
             MailMessage msg = new MailMessage();
@@ -225,7 +225,7 @@ namespace joham.cs_futils.web
             {
                 // save to email
                 MailMessage msg = new MailMessage();
-                msg.From = new MailAddress("Projectenadministratie <admin@rigo.nl>");
+                msg.From = new MailAddress("Projectenadministratie <admin@global.nl>");
                 foreach (string addr in aan.Split(';'))
                 {
                     msg.To.Add(new MailAddress(addr));
@@ -315,12 +315,12 @@ namespace joham.cs_futils.web
             // save to log file.
             string logfile = Path.Combine(
                 ProjectFolder.PROJECT_LOGPATH, 
-                string.Format("RigoPM-{0}.htm", DateTime.Now.ToString("MM-dd-yy")));
+                string.Format("productionlog-{0}.htm", DateTime.Now.ToString("MM-dd-yy")));
 
 #if DEBUG
             logfile = Path.Combine(
                 ProjectFolder.PROJECT_LOGPATH,
-                string.Format("DebugPM-{0}.htm", DateTime.Now.ToString("MM-dd-yy")));
+                string.Format("debuglog-{0}.htm", DateTime.Now.ToString("MM-dd-yy")));
 #endif
 
             if (!File.Exists(logfile))
@@ -349,7 +349,7 @@ namespace joham.cs_futils.web
 
             string from = ConfigurationManager.AppSettings["SMTP_FROM"];
             if (String.IsNullOrWhiteSpace(from))
-                from = "Projectenadministratie <post@rigo.nl>";
+                from = "Projectenadministratie <post@global.nl>";
 
             MailMessage msg = new MailMessage();
             msg.From = new MailAddress(from);
@@ -357,7 +357,7 @@ namespace joham.cs_futils.web
 
             try
             {
-                RigoDAL dal = new RigoDAL();
+                JohamWeb dal = new JohamWeb();
                 string employeeId = dal.GetEmployeeIdByNTAccount(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
                 msg.To.Add(new MailAddress(dal.GetEmployeeEmailAccount(employeeId)));
             }

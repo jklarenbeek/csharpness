@@ -1,6 +1,6 @@
 # CSHARPNESS
 
-A collections of dotNET C# projects aimed to make my life easier. These projects are remnants of projects i've done in the past and are here for reference only. I don't think I will make all of this work anytime soon, but then again, who knows.
+A collections of dotNET C# projects aimed to make my life easier. These projects are snippits of code from projects i've done in the past and are here for reference only. I don't think I will make all of this work anytime soon, but then again, who knows.
 
 ### Adding a reference to a project
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace joham.cs_futils.data {
 
@@ -34,6 +35,7 @@ namespace joham.cs_futils.data {
         }
         public static Dictionary<string, object> ConvertToDictionary(DataTable table)
         {
+            // TODO: DataTableExtension in 
             DataRow row = table.AsEnumerable().FirstOrDefault();
             if (row == null)
                 return ConvertToDictionary(table.NewRow());
