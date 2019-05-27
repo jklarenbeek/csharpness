@@ -10,6 +10,7 @@
   <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0-preview5.19224.8" />
   <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview4.19164.7" />
   <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
+  <PackageReference Include="System.Security.AccessControl" Version="4.6.0-preview5.19224.8" />
 </ItemGroup>
 
   <!-- ItemGroup>
